@@ -44,6 +44,8 @@ public:
 	// Handles camera inputs
 	void Inputs(GLFWwindow* window);
 
+	glm::vec3 GetPosition();
+
 private:
 
 	glm::vec2 mousePos = glm::vec2(0.0f, 0.0f);

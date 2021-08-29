@@ -61,10 +61,8 @@ void UIHandler::SetupPageLayouts()
 	if (ImGui::CollapsingHeader("Material"))
 	{
 		ImGui::Spacing();
-		ImGui::ColorEdit3("Tint Color", SettingData::tintColor);
-		ImGui::Spacing();
 		ImGui::Text("Specular");
-		ImGui::SliderFloat("", &SettingData::specular, 0.0f, 1.0f);
+		ImGui::SliderFloat("", &SettingData::specular, 0.0f, 2.0f);
 	}
 
 	if (ImGui::CollapsingHeader("Enviroment"))
@@ -73,9 +71,11 @@ void UIHandler::SetupPageLayouts()
 		ImGui::Spacing();
 		ImGui::Text("Light Position");
 		ImGui::DragFloat3("", SettingData::lightPosition);
-		ImGui::Spacing();
+		ImGui::NewLine();
 		ImGui::ColorEdit3("Sky Color",SettingData::skyColor);
+		ImGui::Spacing();
 		ImGui::ColorEdit3("Light Color", SettingData::lightColor);
+		ImGui::Spacing();
 		ImGui::ColorEdit3("Shadow Color", SettingData::lightShadowColor);
 		
 	}

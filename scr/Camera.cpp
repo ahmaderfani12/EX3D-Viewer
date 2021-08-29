@@ -91,6 +91,11 @@ void Camera::Matrix(Shader& shader, const char* uniform)
 	}
 	glfwSetScrollCallback(window, scroll_callback);
 }
+  glm::vec3 Camera::GetPosition()
+  {
+
+	  return normalPosition * zoom;
+  }
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 {
 	Camera::zoom -= (float)yoffset;

@@ -4,7 +4,7 @@
 
 	class SettingData {
 	public:
-		static float tintColor[3];
+
 		static float skyColor[3];
 		static float lightColor[3];
 		static float lightShadowColor[3];

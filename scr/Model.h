@@ -17,6 +17,7 @@ public:
     Model();
     void Draw();
     void DeleteShader();
+   
 
     std::string returnMeshDirection() { return meshDirection; }
 private:
@@ -30,8 +31,10 @@ private:
 
     void SetTexture(std::string texturePath);
     void loadModel(std::string path);
-    void processNode(aiNode* node, const aiScene* scene);
-    Mesh processMesh(aiMesh* mesh, const aiScene* scene);
+    void ProcessNode(aiNode* node, const aiScene* scene);
+    Mesh ProcessMesh(aiMesh* mesh, const aiScene* scene);
+
+    void UpdateMeterial();
 
 };
 #endif

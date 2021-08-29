@@ -34,7 +34,7 @@ void GlApp::Start() {
 
 		SetCameraAttribute();
 
-		// ToDo:
+		
 		mainModel->Draw();
 
 		ui.SetupPageLayouts();

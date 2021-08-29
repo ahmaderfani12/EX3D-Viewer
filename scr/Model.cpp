@@ -1,4 +1,5 @@
 #include "Model.h"
+#include "SettingData.h"
 
 
 Model::Model(std::string path, std::string texturePath, Shader& modelShader, Camera& mainCamera)
@@ -18,6 +19,7 @@ Model::Model(std::string path, std::string texturePath, Shader& modelShader, Cam
 void Model::Draw() {
     for (unsigned int i = 0; i < meshes.size(); i++)
         meshes[i].Draw(*shader, *camera);
+    UpdateMeterial();
 }
 
 void Model::SetTexture(std::string texturePath)
@@ -30,7 +32,7 @@ void Model::SetTexture(std::string texturePath)
 
 }
 
-Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
+Mesh Model::ProcessMesh(aiMesh* mesh, const aiScene* scene)
 {
     //ToDo:change it 
     /*Texture texturesX[]
@@ -92,23 +94,37 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
     return Mesh(vertices, indices, textures);
 }
 
+void Model::UpdateMeterial()
+{
+    shader->Activate();
+    glUniform4f(glGetUniformLocation(shader->ID, "lightColor"), SettingData::lightColor[0], SettingData::lightColor[1],
+        SettingData::lightColor[2], 1.0f);
+    glUniform4f(glGetUniformLocation(shader->ID, "ShadowColor"), SettingData::lightShadowColor[0], SettingData::lightShadowColor[1],
+        SettingData::lightShadowColor[2], 1.0f);
+    glUniform3f(glGetUniformLocation(shader->ID, "lightPos"), SettingData::lightPosition[0], SettingData::lightPosition[1],
+        SettingData::lightPosition[2]);
+    glUniform1f(glGetUniformLocation(shader->ID, "specularLight"), SettingData::specular);
+    glUniform3f(glGetUniformLocation(shader->ID, "camPos"),camera->GetPosition().x, camera->GetPosition().y,
+        camera->GetPosition().z);
+}
+
 void Model::DeleteShader()
 {
     shader->Delete();
 }
 
-void Model::processNode(aiNode* node, const aiScene* scene)
+void Model::ProcessNode(aiNode* node, const aiScene* scene)
 {
     // process all the node's meshes (if any)
     for (unsigned int i = 0; i < node->mNumMeshes; i++)
     {
         aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
-        meshes.push_back(processMesh(mesh, scene));
+        meshes.push_back(ProcessMesh(mesh, scene));
     }
     // then do the same for each of its children
     for (unsigned int i = 0; i < node->mNumChildren; i++)
     {
-        processNode(node->mChildren[i], scene);
+        ProcessNode(node->mChildren[i], scene);
     }
 }
 
@@ -122,5 +138,5 @@ void Model::loadModel(std::string path) {
         return;
     }
     meshDirection = path;
-    processNode(scene->mRootNode, scene);
+    ProcessNode(scene->mRootNode, scene);
 }
