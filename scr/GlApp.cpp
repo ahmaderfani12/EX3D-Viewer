@@ -5,6 +5,7 @@
 #include "Texture.h"
 #include "ModelMaker.h"
 #include "UIHandler.h"
+#include"SettingData.h"
 
 
 
@@ -57,7 +58,7 @@ void GlApp::SetMainModel(std::string modelDirection, std::string textureDirectio
 
 void GlApp::PreRender() {
 	// Specify the color of the background
-	glClearColor(1.00f, 0.91f, 0.93f, 1.0f);
+	glClearColor(SettingData::skyColor[0], SettingData::skyColor[1], SettingData::skyColor[2], 1.0f);
 	// Clean the back buffer and depth buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }

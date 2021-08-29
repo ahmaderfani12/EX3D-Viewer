@@ -6,6 +6,7 @@
 #include <windows.h>
 #include <shobjidl.h> 
 #include "FileIO.h"
+#include "SettingData.h"
 
 
 
@@ -60,10 +61,10 @@ void UIHandler::SetupPageLayouts()
 	if (ImGui::CollapsingHeader("Material"))
 	{
 		ImGui::Spacing();
-		ImGui::ColorEdit3("Tint Color", col1);
+		ImGui::ColorEdit3("Tint Color", SettingData::tintColor);
 		ImGui::Spacing();
 		ImGui::Text("Specular");
-		ImGui::SliderFloat("", &s, 0.0f, 1.0f);
+		ImGui::SliderFloat("", &SettingData::specular, 0.0f, 1.0f);
 	}
 
 	if (ImGui::CollapsingHeader("Enviroment"))
@@ -71,11 +72,11 @@ void UIHandler::SetupPageLayouts()
 		
 		ImGui::Spacing();
 		ImGui::Text("Light Position");
-		ImGui::DragFloat3("", vecf);
+		ImGui::DragFloat3("", SettingData::lightPosition);
 		ImGui::Spacing();
-		ImGui::ColorEdit3("Sky Color", col1);
-		ImGui::ColorEdit3("Light Color 1", col1);
-		ImGui::ColorEdit3("Light Color 2", col2);
+		ImGui::ColorEdit3("Sky Color",SettingData::skyColor);
+		ImGui::ColorEdit3("Light Color", SettingData::lightColor);
+		ImGui::ColorEdit3("Shadow Color", SettingData::lightShadowColor);
 		
 	}
 

@@ -169,6 +169,7 @@
     <ClCompile Include="scr\Model.cpp" />
     <ClCompile Include="scr\ModelMaker.cpp" />
     <ClCompile Include="scr\PathHelper.cpp" />
+    <ClCompile Include="scr\SettingData.cpp" />
     <ClCompile Include="scr\ShaderClass.cpp" />
     <ClCompile Include="scr\stb.cpp" />
     <ClCompile Include="scr\Texture.cpp" />
@@ -199,6 +200,7 @@
     <ClInclude Include="scr\Model.h" />
     <ClInclude Include="scr\ModelMaker.h" />
     <ClInclude Include="scr\PathHelper.h" />
+    <ClInclude Include="scr\SettingData.h" />
     <ClInclude Include="scr\ShaderClass.h" />
     <ClInclude Include="scr\Texture.h" />
     <ClInclude Include="scr\UIHandler.h" />
