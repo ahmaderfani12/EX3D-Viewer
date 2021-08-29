@@ -28,10 +28,15 @@ void UIHandler::PreRender()
 	ImGui_ImplGlfw_NewFrame();
 	ImGui::NewFrame();
 }
-
+//ToDo:delete this
+static float col1[3] = { 1.0f, 0.0f, 0.2f };
+static float col2[3] = { 0.4f, 0.7f, 0.0f };
+static float vecf[] = { 0.10f, 0.20f, 0.30f };
+float s;
+static float vec4a[4] = { 0.10f, 0.20f, 0.30f, 0.44f };
 void UIHandler::SetupPageLayouts()
 {
-	// ImGui Page setup
+	
 
 	if (ImGui::BeginMainMenuBar())
 	{
@@ -47,16 +52,34 @@ void UIHandler::SetupPageLayouts()
 		ImGui::EndMainMenuBar();
 	}
 
-	ImGui::Begin("X3DViewer");
+
+	ImGui::Begin("Setting");
 
 	
 	
+	if (ImGui::CollapsingHeader("Material"))
+	{
+		ImGui::Spacing();
+		ImGui::ColorEdit3("Tint Color", col1);
+		ImGui::Spacing();
+		ImGui::Text("Specular");
+		ImGui::SliderFloat("", &s, 0.0f, 1.0f);
+	}
 
-	if (ImGui::Button("Open Model")) {
+	if (ImGui::CollapsingHeader("Enviroment"))
+	{
+		
+		ImGui::Spacing();
+		ImGui::Text("Light Position");
+		ImGui::DragFloat3("", vecf);
+		ImGui::Spacing();
+		ImGui::ColorEdit3("Sky Color", col1);
+		ImGui::ColorEdit3("Light Color 1", col1);
+		ImGui::ColorEdit3("Light Color 2", col2);
+		
+	}
 
-	}	
-	ImGui::ShowDemoWindow();
-	ImGui::Text("Hello there adventurer!");
+
 	ImGui::End();
 }
 
