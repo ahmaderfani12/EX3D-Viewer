@@ -179,8 +179,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
-    <None Include="default.frag" />
-    <None Include="default.vert" />
+    <None Include="files\default.frag" />
+    <None Include="files\default.vert" />
+    <None Include="files\gizmo.frag" />
+    <None Include="files\gizmo.vert" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="imgui\imconfig.h" />

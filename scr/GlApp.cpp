@@ -53,7 +53,8 @@ void GlApp::Start() {
 void GlApp::SetMainModel(std::string modelDirection, std::string textureDirection)
 {
 	delete mainModel;
-	mainModel = ModelMaker::MakeModel(modelDirection, textureDirection, "default.frag", "default.vert", camera);
+	mainModel = ModelMaker::MakeModel(modelDirection, textureDirection,
+		PathHelper::GetRootPath()+"/files/default.frag", PathHelper::GetRootPath() + "/files/default.vert", camera);
 }
 
 void GlApp::PreRender() {

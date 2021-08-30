@@ -104,13 +104,19 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="default.vert">
-      <Filter>Resource Files\Shaders</Filter>
-    </None>
-    <None Include="default.frag">
-      <Filter>Resource Files\Shaders</Filter>
-    </None>
     <None Include="cpp.hint" />
+    <None Include="files\default.vert">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="files\default.frag">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="files\gizmo.vert">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="files\gizmo.frag">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="imgui\imstb_textedit.h">
