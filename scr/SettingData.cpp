@@ -6,3 +6,4 @@
 	float SettingData::lightShadowColor[3] = { 0.0f, 0.0f, 0.0f };
 	float SettingData::lightPosition[3] = { 1.0f, 1.0f, -1.0f };
 	float SettingData::specular = 0.5f;
+	float SettingData::specularPower = 8.0f;

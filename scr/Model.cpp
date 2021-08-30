@@ -104,6 +104,7 @@ void Model::UpdateMeterial()
     glUniform3f(glGetUniformLocation(shader->ID, "lightPos"), SettingData::lightPosition[0], SettingData::lightPosition[1],
         SettingData::lightPosition[2]);
     glUniform1f(glGetUniformLocation(shader->ID, "specularLight"), SettingData::specular);
+    glUniform1f(glGetUniformLocation(shader->ID, "specularpower"), SettingData::specularPower);
     glUniform3f(glGetUniformLocation(shader->ID, "camPos"),camera->GetPosition().x, camera->GetPosition().y,
         camera->GetPosition().z);
 }

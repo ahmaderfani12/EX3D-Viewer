@@ -23,6 +23,7 @@ uniform vec4 ShadowColor;
 uniform vec3 lightPos;
 
 uniform float specularLight;
+uniform float specularpower;
 // Gets the position of the camera from the main function
 uniform vec3 camPos;
 
@@ -42,7 +43,7 @@ vec4 direcLight()
 	// specular lighting
 	vec3 viewDirection = normalize(camPos - vec3(0.0,0.0,0.0));
 	vec3 reflectionDirection = reflect(-lightDirection, normal);
-	float specAmount = pow(max(dot(viewDirection, reflectionDirection), 0.0f), 8);
+	float specAmount = pow(max(dot(viewDirection, reflectionDirection), 0.0f), specularpower);
 	float specular = specAmount * specularLight;
 
 	return texture(diffuse0, texCoord) * (diffuseColor + ambient + specular) * lightColor;

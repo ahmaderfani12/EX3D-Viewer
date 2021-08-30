@@ -12,6 +12,7 @@
 		static float lightPosition[3];
 
 		static float specular;
+		static float specularPower;
 	};
 
 #endif

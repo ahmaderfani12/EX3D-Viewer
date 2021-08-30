@@ -62,7 +62,8 @@ void UIHandler::SetupPageLayouts()
 	{
 		ImGui::Spacing();
 		ImGui::Text("Specular");
-		ImGui::SliderFloat("", &SettingData::specular, 0.0f, 2.0f);
+		ImGui::SliderFloat("amount", &SettingData::specular, 0.0f, 5.0f);
+		ImGui::SliderFloat("power", &SettingData::specularPower, 1.0f, 20.0f);
 	}
 
 	if (ImGui::CollapsingHeader("Enviroment"))
