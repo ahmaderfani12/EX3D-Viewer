@@ -13,6 +13,8 @@
 
 		static float specular;
 		static float specularPower;
+
+		static bool showGizmo;
 	};
 
 #endif

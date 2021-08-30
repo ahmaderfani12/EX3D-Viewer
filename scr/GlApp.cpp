@@ -18,6 +18,7 @@ void GlApp::Start() {
 
 	//On start Model
 	SetMainModel(PathHelper::GetRootPath() + "/files/backpack.obj", PathHelper::GetRootPath() + "/files/diffuse.png");
+	SetGizmoModel(PathHelper::GetRootPath() + "/files/XYZ.fbx", PathHelper::GetRootPath() + "/files/Gradient.png");
 
 	UIHandler ui = UIHandler(this);
 
@@ -36,6 +37,8 @@ void GlApp::Start() {
 
 		
 		mainModel->Draw();
+		if(SettingData::showGizmo)
+			gizmoModel->Draw();
 
 		ui.SetupPageLayouts();
 
@@ -55,6 +58,13 @@ void GlApp::SetMainModel(std::string modelDirection, std::string textureDirectio
 	delete mainModel;
 	mainModel = ModelMaker::MakeModel(modelDirection, textureDirection,
 		PathHelper::GetRootPath()+"/files/default.frag", PathHelper::GetRootPath() + "/files/default.vert", camera);
+}
+
+void GlApp::SetGizmoModel(std::string modelDirection, std::string textureDirection)
+{
+	delete gizmoModel;
+	gizmoModel = ModelMaker::MakeModel(modelDirection, textureDirection,
+		PathHelper::GetRootPath() + "/files/gizmo.frag", PathHelper::GetRootPath() + "/files/default.vert", camera);
 }
 
 void GlApp::PreRender() {
@@ -113,6 +123,8 @@ void GlApp::InitialApp(const std::string& appName, int height, int width)
 
 void GlApp::Terminate() {
 	mainModel->DeleteShader();
+	gizmoModel->DeleteShader();
 	glfwDestroyWindow(window);
 	glfwTerminate();
 }
+

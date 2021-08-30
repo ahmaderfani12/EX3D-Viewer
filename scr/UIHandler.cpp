@@ -56,7 +56,7 @@ void UIHandler::SetupPageLayouts()
 
 	ImGui::Begin("Setting");
 
-	
+	ImGui::ShowDemoWindow();
 	
 	if (ImGui::CollapsingHeader("Material"))
 	{
@@ -71,13 +71,15 @@ void UIHandler::SetupPageLayouts()
 		
 		ImGui::Spacing();
 		ImGui::Text("Light Position");
-		ImGui::DragFloat3("", SettingData::lightPosition);
+		ImGui::DragFloat3("", SettingData::lightPosition,0.1,-5.0,5.0);
 		ImGui::NewLine();
 		ImGui::ColorEdit3("Sky Color",SettingData::skyColor);
 		ImGui::Spacing();
 		ImGui::ColorEdit3("Light Color", SettingData::lightColor);
 		ImGui::Spacing();
 		ImGui::ColorEdit3("Shadow Color", SettingData::lightShadowColor);
+		ImGui::NewLine();
+		ImGui::Checkbox("Show World Gizmo", &SettingData::showGizmo);
 		
 	}
 

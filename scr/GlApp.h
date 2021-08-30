@@ -15,6 +15,7 @@ public:
 	int width;
 	int height;
 	Model* mainModel;
+	Model* gizmoModel;
 	GlApp(const std::string& appName, int height, int width);
 	void Start();
 	void SetMainModel(std::string modelDirection, std::string textureDirection);
@@ -26,6 +27,8 @@ private:
 	void SetCameraAttribute();
 	void SetCameraInput();
 	void Terminate();
+
+	void SetGizmoModel(std::string modelDirection, std::string textureDirection);
 
 };
 #endif

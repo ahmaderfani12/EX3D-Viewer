@@ -31,12 +31,11 @@ uniform vec3 camPos;
 
 vec4 direcLight()
 {
-	// ambient lighting
-	float ambient = 0.20f;
+
 
 	// diffuse lighting
 	vec3 normal = normalize(Normal);
-	vec3 lightDirection = normalize(lightPos*-1);
+	vec3 lightDirection = normalize(lightPos);
 	float diffuse = max(dot(normal, lightDirection), 0.0f);
 	vec4 diffuseColor =  mix(ShadowColor,lightColor,diffuse);
 
@@ -46,7 +45,7 @@ vec4 direcLight()
 	float specAmount = pow(max(dot(viewDirection, reflectionDirection), 0.0f), specularpower);
 	float specular = specAmount * specularLight;
 
-	return texture(diffuse0, texCoord) * (diffuseColor + ambient + specular) * lightColor;
+	return texture(diffuse0, texCoord) * (diffuseColor + specular);
 }
 
 
