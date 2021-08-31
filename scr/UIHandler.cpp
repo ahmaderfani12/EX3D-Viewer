@@ -60,10 +60,19 @@ void UIHandler::SetupPageLayouts()
 	
 	if (ImGui::CollapsingHeader("Material"))
 	{
-		ImGui::Spacing();
-		ImGui::Text("Specular");
-		ImGui::SliderFloat("amount", &SettingData::specular, 0.0f, 5.0f);
-		ImGui::SliderFloat("power", &SettingData::specularPower, 1.0f, 20.0f);
+		{
+			ImGui::Spacing();
+			ImGui::Text("Specular");
+			ImGui::SliderFloat("amount", &SettingData::specular, 0.0f, 5.0f);
+			ImGui::SliderFloat("power", &SettingData::specularPower, 1.0f, 20.0f);
+		}
+		{
+			ImGui::Spacing();
+			ImGui::Text("Rim");
+			ImGui::SliderFloat("power ", &SettingData::rimPower, 0.0f, 5.0f);
+			ImGui::SliderFloat("Strength", &SettingData::rimStrength, 1.0f, 10.0f);
+			ImGui::ColorEdit3("Color", SettingData::rimColor);
+		}
 	}
 
 	if (ImGui::CollapsingHeader("Enviroment"))

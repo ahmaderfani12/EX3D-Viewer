@@ -1,30 +1,30 @@
 #version 330 core
 
-// Outputs colors in RGBA
 out vec4 FragColor;
 
-// Imports the current position from the Vertex Shader
+// Imports from the Vertex Shader
 in vec3 crntPos;
-// Imports the normal from the Vertex Shader
 in vec3 Normal;
-// Imports the color from the Vertex Shader
 in vec3 color;
-// Imports the texture coordinates from the Vertex Shader
 in vec2 texCoord;
+in vec3 localPos;
 
-
-// Gets the Texture Units from the main function
+// Gets the Texture Units 
 uniform sampler2D diffuse0;
+// Have used yet
 uniform sampler2D specular0;
-// Gets the color of the light from the main function
+
+
 uniform vec4 lightColor;
 uniform vec4 ShadowColor; 
-
 uniform vec3 lightPos;
+uniform vec3 rimColor;
 
 uniform float specularLight;
 uniform float specularpower;
-// Gets the position of the camera from the main function
+uniform float rimPower;
+uniform float rimStrength;
+
 uniform vec3 camPos;
 
 
@@ -45,7 +45,14 @@ vec4 direcLight()
 	float specAmount = pow(max(dot(viewDirection, reflectionDirection), 0.0f), specularpower);
 	float specular = specAmount * specularLight;
 
-	return texture(diffuse0, texCoord) * (diffuseColor + specular);
+	// rim lighting
+	vec3 verToCam = normalize(camPos - localPos);
+	float rimAmount = max(1.0 - pow(max(dot(normal,verToCam),0.01),rimPower)*rimStrength,0) * diffuse;
+	
+	
+
+	return mix(texture(diffuse0, texCoord),vec4(rimColor,1.0),rimAmount) * (diffuseColor + specular);
+	//return vec4(rimAmount,rimAmount,rimAmount,1.0);
 }
 
 
