@@ -2,14 +2,16 @@
 #include "SettingData.h"
 
 
-Model::Model(std::string path, std::string texturePath, Shader& modelShader, Camera& mainCamera)
+Model::Model(std::string path, std::string texturePath, Shader& modelShader, Camera& mainCamera, Material::ShaderType shaderType)
 {
     shader = &modelShader;
     camera = &mainCamera;
 
-    SetTexture(texturePath);
+    material = new Material(shaderType, shader, camera);
 
+    SetTexture(texturePath);
     loadModel(path);
+
 }
 
  Model::Model()
@@ -19,7 +21,7 @@ Model::Model(std::string path, std::string texturePath, Shader& modelShader, Cam
 void Model::Draw() {
     for (unsigned int i = 0; i < meshes.size(); i++)
         meshes[i].Draw(*shader, *camera);
-    UpdateMeterial();
+    material->UpdateShader();
 }
 
 void Model::SetTexture(std::string texturePath)
@@ -94,31 +96,6 @@ Mesh Model::ProcessMesh(aiMesh* mesh, const aiScene* scene)
     return Mesh(vertices, indices, textures);
 }
 
-void Model::UpdateMeterial()
-{
-    shader->Activate();
-    glUniform4f(glGetUniformLocation(shader->ID, "lightColor"), SettingData::lightColor[0], SettingData::lightColor[1],
-        SettingData::lightColor[2], 1.0f);
-
-    glUniform4f(glGetUniformLocation(shader->ID, "ShadowColor"), SettingData::lightShadowColor[0], SettingData::lightShadowColor[1],
-        SettingData::lightShadowColor[2], 1.0f);
-
-    glUniform3f(glGetUniformLocation(shader->ID, "lightPos"), SettingData::lightPosition[0], SettingData::lightPosition[1],
-        SettingData::lightPosition[2]);
-
-    glUniform1f(glGetUniformLocation(shader->ID, "specularLight"), SettingData::specular);
-
-    glUniform1f(glGetUniformLocation(shader->ID, "specularpower"), SettingData::specularPower);
-
-    glUniform3f(glGetUniformLocation(shader->ID, "camPos"),camera->GetPosition().x, camera->GetPosition().y,
-        camera->GetPosition().z);
-
-    glUniform1f(glGetUniformLocation(shader->ID, "rimPower"), SettingData::rimPower);
-    glUniform1f(glGetUniformLocation(shader->ID, "rimStrength"), SettingData::rimStrength);
-
-    glUniform3f(glGetUniformLocation(shader->ID, "rimColor"), SettingData::rimColor[0], SettingData::rimColor[1],
-        SettingData::rimColor[2]);
-}
 
 void Model::DeleteShader()
 {

@@ -15,7 +15,7 @@ out vec3 crntPos;
 out vec3 Normal;
 out vec3 color;
 out vec2 texCoord;
-out vec3 localPos;
+
 
 uniform mat4 camMatrix;
 uniform mat4 model;
@@ -27,7 +27,7 @@ void main()
 	Normal = aNormal;
 	color = aColor;
 	texCoord = aTex;
-	localPos = aPos;
+	
 	
 	// Outputs the positions/coordinates of all vertices
 	gl_Position = camMatrix * vec4(crntPos, 1.0);

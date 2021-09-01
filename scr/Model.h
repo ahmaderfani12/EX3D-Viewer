@@ -8,12 +8,13 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 #include"shaderClass.h"
+#include "Material.h"
 
 class Model
 {
 public:
 
-    Model(std::string path, std::string texturePath, Shader& modelShader, Camera& mainCamera);
+    Model(std::string path, std::string texturePath, Shader& modelShader, Camera& mainCamera, Material::ShaderType shaderType);
     Model();
     void Draw();
     void DeleteShader();
@@ -24,6 +25,7 @@ private:
     
     Camera* camera;
     Shader* shader;
+    Material* material;
 
     std::vector<Mesh> meshes;
     std::string meshDirection;

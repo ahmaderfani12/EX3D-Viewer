@@ -7,7 +7,7 @@ in vec3 crntPos;
 in vec3 Normal;
 in vec3 color;
 in vec2 texCoord;
-in vec3 localPos;
+
 
 // Gets the Texture Units 
 uniform sampler2D diffuse0;
@@ -46,7 +46,7 @@ vec4 direcLight()
 	float specular = specAmount * specularLight;
 
 	// rim lighting
-	vec3 verToCam = normalize(camPos - localPos);
+	vec3 verToCam = normalize(camPos - crntPos);
 	float rimAmount = max(1.0 - pow(max(dot(normal,verToCam),0.01),rimPower)*rimStrength,0) * diffuse;
 	
 	

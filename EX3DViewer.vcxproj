@@ -165,6 +165,7 @@
     <ClCompile Include="scr\glad.c" />
     <ClCompile Include="scr\GlApp.cpp" />
     <ClCompile Include="scr\Main.cpp" />
+    <ClCompile Include="scr\Material.cpp" />
     <ClCompile Include="scr\Mesh.cpp" />
     <ClCompile Include="scr\Model.cpp" />
     <ClCompile Include="scr\ModelMaker.cpp" />
@@ -198,6 +199,7 @@
     <ClInclude Include="scr\EBO.h" />
     <ClInclude Include="scr\FileIO.h" />
     <ClInclude Include="scr\GlApp.h" />
+    <ClInclude Include="scr\Material.h" />
     <ClInclude Include="scr\Mesh.h" />
     <ClInclude Include="scr\Model.h" />
     <ClInclude Include="scr\ModelMaker.h" />

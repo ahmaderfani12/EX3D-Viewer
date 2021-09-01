@@ -57,14 +57,14 @@ void GlApp::SetMainModel(std::string modelDirection, std::string textureDirectio
 {
 	delete mainModel;
 	mainModel = ModelMaker::MakeModel(modelDirection, textureDirection,
-		PathHelper::GetRootPath()+"/files/default.frag", PathHelper::GetRootPath() + "/files/default.vert", camera);
+		PathHelper::GetRootPath()+"/files/default.frag", PathHelper::GetRootPath() + "/files/default.vert", camera,Material::ShaderType::normal);
 }
 
 void GlApp::SetGizmoModel(std::string modelDirection, std::string textureDirection)
 {
 	delete gizmoModel;
 	gizmoModel = ModelMaker::MakeModel(modelDirection, textureDirection,
-		PathHelper::GetRootPath() + "/files/gizmo.frag", PathHelper::GetRootPath() + "/files/default.vert", camera);
+		PathHelper::GetRootPath() + "/files/gizmo.frag", PathHelper::GetRootPath() + "/files/default.vert", camera, Material::ShaderType::gizmo);
 }
 
 void GlApp::PreRender() {
