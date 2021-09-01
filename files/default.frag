@@ -4,7 +4,7 @@ out vec4 FragColor;
 
 // Imports from the Vertex Shader
 in vec3 crntPos;
-in vec3 Normal;
+in vec3 normal;
 in vec3 color;
 in vec2 texCoord;
 
@@ -34,8 +34,8 @@ vec4 direcLight()
 
 
 	// diffuse lighting
-	vec3 normal = normalize(Normal);
-	vec3 lightDirection = normalize(lightPos);
+	vec3 normal = normalize(normal);
+	vec3 lightDirection = normalize(lightPos-crntPos);
 	float diffuse = max(dot(normal, lightDirection), 0.0f);
 	vec4 diffuseColor =  mix(ShadowColor,lightColor,diffuse);
 
@@ -47,8 +47,9 @@ vec4 direcLight()
 
 	// rim lighting
 	vec3 verToCam = normalize(camPos - crntPos);
-	float rimAmount = max(1.0 - pow(max(dot(normal,verToCam),0.01),rimPower)*rimStrength,0) * diffuse;
-	
+	float rimAmount = max(1.0 - pow(max(dot(normal,verToCam),0.01),rimPower)*rimStrength,0);
+	// Based on Shadow:
+	//float rimAmount = max(1.0 - pow(max(dot(normal,verToCam),0.01),rimPower)*rimStrength,0) * diffuse;
 	
 
 	return mix(texture(diffuse0, texCoord),vec4(rimColor,1.0),rimAmount) * (diffuseColor + specular);

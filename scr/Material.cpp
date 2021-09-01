@@ -1,5 +1,6 @@
 #include"Material.h"
 #include "SettingData.h"
+#define PI 3.1415
 
 Material::Material(ShaderType type,Shader* shader, Camera* camera)
 {
@@ -48,8 +49,8 @@ void Material::UpdateNormal()
     //Vertex
     glUniform3f(glGetUniformLocation(shader->ID, "worldPos"), SettingData::mainModelPos[0], SettingData::mainModelPos[1],
         SettingData::mainModelPos[2]);
-    glUniform3f(glGetUniformLocation(shader->ID, "rotationAngle"), SettingData::mainModelAngle[0], SettingData::mainModelAngle[1],
-        SettingData::mainModelAngle[2]);
+    glUniform3f(glGetUniformLocation(shader->ID, "rotationAngle"), SettingData::mainModelAngle[0]*PI/180, SettingData::mainModelAngle[1] * PI / 180,
+        SettingData::mainModelAngle[2] * PI / 180);
     glUniform3f(glGetUniformLocation(shader->ID, "scale"), SettingData::mainModelScale[0], SettingData::mainModelScale[1],
         SettingData::mainModelScale[2]);
 

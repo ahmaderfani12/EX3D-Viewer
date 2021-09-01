@@ -12,7 +12,7 @@ layout (location = 3) in vec2 aTex;
 
 // Outputs for the Fragment Shader
 out vec3 crntPos;
-out vec3 Normal;
+out vec3 normal;
 out vec3 color;
 out vec2 texCoord;
 
@@ -60,15 +60,24 @@ mat4 RotationMatrix(){
 	);
 
 }
+
+vec3 transformPos(in vec3 vec){
+	 return vec4(vec,1.0) *ScaleMatrix()*RotationMatrix() * PositionMatrix();
+}
+vec3 transformNormal(in vec3 vec){
+	 return vec4(vec,1.0) *RotationMatrix();
+}
+
+
 void main()
 {
 
-	crntPos = aPos;
-	Normal = aNormal;
+	normal = transformNormal(aNormal);
+	crntPos=transformPos(aPos);
 	color = aColor;
 	texCoord = aTex;
-	
-	vec4 transform = vec4(crntPos,1.0) *ScaleMatrix()*RotationMatrix() * PositionMatrix();
-	// Outputs the positions/coordinates of all vertices
-	gl_Position = camMatrix * transform;
+
+
+
+	gl_Position = camMatrix * vec4(crntPos,1.0);
 }

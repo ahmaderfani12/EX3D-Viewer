@@ -61,7 +61,7 @@ void UIHandler::SetupPageLayouts()
 		ImGui::Spacing();
 		ImGui::Text("Transform");
 		ImGui::DragFloat3("Position", SettingData::mainModelPos, 0.1, -50.0, 50.0);
-		ImGui::DragFloat3("Rotation", SettingData::mainModelAngle, 0.1, -5.0, 5.0);
+		ImGui::DragFloat3("Rotation", SettingData::mainModelAngle, 0.1);
 		ImGui::DragFloat3("Scale", SettingData::mainModelScale, 0.1, -5.0, 5.0);
 	}
 
