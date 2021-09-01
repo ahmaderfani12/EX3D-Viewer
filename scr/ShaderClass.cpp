@@ -12,9 +12,9 @@ std::string get_file_contents(std::string& path)
 	auto ss = ostringstream{};
 	ifstream input_file(path);
 	if (!input_file.is_open()) {
-		cerr << "Could not open the file - '"
+		cerr << "Could not open the defauls data in file folder"
 			<< path << "'" << endl;
-		exit(EXIT_FAILURE);
+		//exit(EXIT_FAILURE);
 	}
 	ss << input_file.rdbuf();
 	return ss.str();
