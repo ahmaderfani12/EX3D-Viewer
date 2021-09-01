@@ -12,6 +12,10 @@
 
 		static float lightPosition[3];
 
+		static float mainModelPos[3];
+		static float mainModelScale[3];
+		static float mainModelAngle[3];
+
 		static float specular;
 		static float specularPower;
 		static float rimPower;

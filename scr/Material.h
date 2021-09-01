@@ -16,8 +16,6 @@ public:
 	Shader* shader;
 	Camera* camera;
 
-	glm::vec3 objectPos = glm::vec3(0.0f, 0.0f, 0.0f);
-	glm::mat4 objectModel = glm::mat4(1.0f);
 
 	 Material(ShaderType type, Shader* shader, Camera* camera);
 	void UpdateShader();

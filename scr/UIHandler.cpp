@@ -10,7 +10,6 @@
 
 
 
-
 void UIHandler::InitializeImgui(GLFWwindow* windowP)
 {
 	IMGUI_CHECKVERSION();
@@ -37,16 +36,16 @@ float s;
 static float vec4a[4] = { 0.10f, 0.20f, 0.30f, 0.44f };
 void UIHandler::SetupPageLayouts()
 {
-	
+
 
 	if (ImGui::BeginMainMenuBar())
 	{
 		if (ImGui::BeginMenu("File"))
 		{
-			if (ImGui::MenuItem("New Model","fbx,obj")) { LoadModel(); }
+			if (ImGui::MenuItem("New Model", "fbx,obj")) { LoadModel(); }
 			if (ImGui::MenuItem("New Texture")) { LoadTexture(); }
 			ImGui::Separator();
-			if (ImGui::MenuItem("Exit")) {exit(3);}
+			if (ImGui::MenuItem("Exit")) { exit(3); }
 
 			ImGui::EndMenu();
 		}
@@ -56,24 +55,31 @@ void UIHandler::SetupPageLayouts()
 
 	ImGui::Begin("Setting");
 
-	ImGui::ShowDemoWindow();
 	
-	if (ImGui::CollapsingHeader("Material"))
+
 	{
-		{
-			ImGui::Spacing();
-			ImGui::Text("Specular");
-			ImGui::SliderFloat("amount", &SettingData::specular, 0.0f, 5.0f);
-			ImGui::SliderFloat("power", &SettingData::specularPower, 1.0f, 20.0f);
-		}
-		{
-			ImGui::Spacing();
-			ImGui::Text("Rim");
-			ImGui::SliderFloat("power ", &SettingData::rimPower, 0.0f, 5.0f);
-			ImGui::SliderFloat("Strength", &SettingData::rimStrength, 1.0f, 10.0f);
-			ImGui::ColorEdit3("Color", SettingData::rimColor);
-		}
+		ImGui::Spacing();
+		ImGui::Text("Transform");
+		ImGui::DragFloat3("Position", SettingData::mainModelPos, 0.1, -50.0, 50.0);
+		ImGui::DragFloat3("Rotation", SettingData::mainModelAngle, 0.1, -5.0, 5.0);
+		ImGui::DragFloat3("Scale", SettingData::mainModelScale, 0.1, -5.0, 5.0);
 	}
+
+	{
+		ImGui::Spacing();
+		ImGui::Text("Specular");
+		ImGui::SliderFloat("amount", &SettingData::specular, 0.0f, 5.0f);
+		ImGui::SliderFloat("power", &SettingData::specularPower, 1.0f, 20.0f);
+	}
+	{
+		ImGui::Spacing();
+		ImGui::Text("Rim");
+		ImGui::SliderFloat("power ", &SettingData::rimPower, 0.0f, 5.0f);
+		ImGui::SliderFloat("Strength", &SettingData::rimStrength, 1.0f, 10.0f);
+		ImGui::ColorEdit3("Color", SettingData::rimColor);
+		ImGui::NewLine();
+	}
+	
 
 	if (ImGui::CollapsingHeader("Enviroment"))
 	{

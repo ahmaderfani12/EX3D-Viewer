@@ -20,15 +20,55 @@ out vec2 texCoord;
 uniform mat4 camMatrix;
 uniform mat4 model;
 
+uniform vec3 worldPos;
+uniform vec3 rotationAngle;
+uniform vec3 scale;
 
+mat4 PositionMatrix(){
+	return mat4(1.0,0.0,0.0,worldPos.x,
+				0.0,1.0,0.0,worldPos.y,
+				0.0,0.0,1.0,worldPos.z,
+				0.0,0.0,0.0,1.0
+	);
+}
+
+mat4 ScaleMatrix(){
+	return mat4(scale.x,0.0,0.0,0.0,
+				0.0,scale.y,0.0,0.0,
+				0.0,0.0,scale.z,0.0,
+				0.0,0.0,0.0,1.0
+	);
+}
+
+mat4 RotationMatrix(){
+//x,y,z matrix
+	return 
+	mat4(1.0,0.0,0.0,0.0,
+		0.0,cos(rotationAngle.x),sin(rotationAngle.x),0.0,
+		0.0,-sin(rotationAngle.x),cos(rotationAngle.x),0.0,
+		0.0,0.0,0.0,1.0
+	)*	
+	mat4(cos(rotationAngle.y),0.0,-sin(rotationAngle.y),0.0,
+		 0.0,1.0,0.0,0.0,
+		 sin(rotationAngle.y),0.0,cos(rotationAngle.y),0.0,
+		 0.0,0.0,0.0,1.0
+	)*	
+	mat4(cos(rotationAngle.z),sin(rotationAngle.z),0.0,0.0,
+		 -sin(rotationAngle.z),cos(rotationAngle.z),0.0,0.0,
+		 0.0,0.0,1.0,0.0,
+		 0.0,0.0,0.0,1.0
+	);
+
+}
 void main()
 {
-	crntPos = vec3(model * vec4(aPos, 1.0f));
+
+	crntPos = aPos;
 	Normal = aNormal;
 	color = aColor;
 	texCoord = aTex;
 	
-	
+	vec4 transform = vec4(crntPos,1.0) *ScaleMatrix()*RotationMatrix() * PositionMatrix();
 	// Outputs the positions/coordinates of all vertices
-	gl_Position = camMatrix * vec4(crntPos, 1.0);
+	gl_Position = camMatrix * transform;
 }

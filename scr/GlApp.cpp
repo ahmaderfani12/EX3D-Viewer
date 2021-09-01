@@ -64,7 +64,7 @@ void GlApp::SetGizmoModel(std::string modelDirection, std::string textureDirecti
 {
 	delete gizmoModel;
 	gizmoModel = ModelMaker::MakeModel(modelDirection, textureDirection,
-		PathHelper::GetRootPath() + "/files/gizmo.frag", PathHelper::GetRootPath() + "/files/default.vert", camera, Material::ShaderType::gizmo);
+		PathHelper::GetRootPath() + "/files/gizmo.frag", PathHelper::GetRootPath() + "/files/gizmo.vert", camera, Material::ShaderType::gizmo);
 }
 
 void GlApp::PreRender() {
@@ -118,7 +118,7 @@ void GlApp::InitialApp(const std::string& appName, int height, int width)
 	glEnable(GL_DEPTH_TEST);
 
 	// Creates camera object & set initial position
-	camera = Camera(width, height, glm::vec3(0.0f, 13.0f, 5.0f));
+	camera = Camera(width, height);
 }
 
 void GlApp::Terminate() {

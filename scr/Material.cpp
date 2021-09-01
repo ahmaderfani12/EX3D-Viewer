@@ -6,16 +6,7 @@ Material::Material(ShaderType type,Shader* shader, Camera* camera)
 	shaderType = type;
     this->shader = shader;
     this->camera = camera;
-    
-    glm::mat4 test(0.0f);
-    test[0].w = 1.0;
-    test[1].w = 1.0;
-    test[2].w = 1.0;
-    test[3].w = 1.0;
-    objectModel = glm::translate(objectModel, objectPos);
-    //objectModel = test * objectModel;
-    shader->Activate();
-    glUniformMatrix4fv(glGetUniformLocation(shader->ID, "model"), 1, GL_FALSE, glm::value_ptr(objectModel));
+
 }
 
 void Material::UpdateShader()
@@ -54,6 +45,13 @@ void Material::UpdateNormal()
     glUniform3f(glGetUniformLocation(shader->ID, "rimColor"), SettingData::rimColor[0], SettingData::rimColor[1],
         SettingData::rimColor[2]);
 
+    //Vertex
+    glUniform3f(glGetUniformLocation(shader->ID, "worldPos"), SettingData::mainModelPos[0], SettingData::mainModelPos[1],
+        SettingData::mainModelPos[2]);
+    glUniform3f(glGetUniformLocation(shader->ID, "rotationAngle"), SettingData::mainModelAngle[0], SettingData::mainModelAngle[1],
+        SettingData::mainModelAngle[2]);
+    glUniform3f(glGetUniformLocation(shader->ID, "scale"), SettingData::mainModelScale[0], SettingData::mainModelScale[1],
+        SettingData::mainModelScale[2]);
 
 }
 
