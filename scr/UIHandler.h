@@ -8,6 +8,8 @@ class UIHandler {
 public:
 
 	UIHandler(GlApp* x);
+	UIHandler();
+
 	GlApp* app;
 
 	void InitializeImgui(GLFWwindow* windowP);

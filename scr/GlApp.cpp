@@ -7,6 +7,7 @@
 #include"SettingData.h"
 #include "UIHandler.h"
 
+UIHandler ui;
 
 GlApp::GlApp(const std::string& appName, int height, int width)
 {
@@ -19,11 +20,16 @@ void GlApp::Start() {
 	SetMainModel(PathHelper::GetRootPath() + "/files/Ex3D_Logo.obj", PathHelper::GetRootPath() + "/files/Gradient.png");
 	SetGizmoModel(PathHelper::GetRootPath() + "/files/XYZ.fbx", PathHelper::GetRootPath() + "/files/Gradient.png");
 
-	UIHandler ui = UIHandler(this);
+	 ui = UIHandler(this);
 
-	// Initialize ImGUI
 	ui.InitializeImgui(window);
 
+	Update();
+	
+	Terminate();
+}
+void GlApp::Update()
+{
 	while (!glfwWindowShouldClose(window))
 	{
 		PreRender();
@@ -31,10 +37,10 @@ void GlApp::Start() {
 		ui.PreRender();
 
 		SetCameraAttribute();
-	
+
 		mainModel->Draw();
 
-		if(SettingData::showGizmo)
+		if (SettingData::showGizmo)
 			gizmoModel->Draw();
 
 		ui.SetupPageLayouts();
@@ -43,12 +49,9 @@ void GlApp::Start() {
 
 		PostRender();
 
-		if(!ui.IsCaptureMouse())
+		if (!ui.IsCaptureMouse())
 			SetCameraInput();
 	}
-
-	ui.DestroyImgui();
-	Terminate();
 }
 void GlApp::SetMainModel(std::string modelDirection, std::string textureDirection)
 {
@@ -119,7 +122,7 @@ void GlApp::InitialApp(const std::string& appName, int height, int width)
 }
 
 void GlApp::Terminate() {
-	
+	ui.DestroyImgui();
 	mainModel->DeleteShader();
 	gizmoModel->DeleteShader();
 	glfwDestroyWindow(window);

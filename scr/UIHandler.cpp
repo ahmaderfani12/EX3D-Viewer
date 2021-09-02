@@ -14,6 +14,10 @@ UIHandler::UIHandler(GlApp* x)
 	app = x;
 }
 
+UIHandler::UIHandler()
+{
+}
+
 
 void UIHandler::InitializeImgui(GLFWwindow* windowP)
 {

@@ -19,6 +19,7 @@ public:
 	Model* gizmoModel;
 	GlApp(const std::string& appName, int height, int width);
 	void Start();
+	void Update();
 	void SetMainModel(std::string modelDirection, std::string textureDirection);
 
 private:
