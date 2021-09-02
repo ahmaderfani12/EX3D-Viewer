@@ -1,9 +1,9 @@
-#include "ShaderClass.h"
+#include "Shader.h"
 #include "Camera.h"
 #ifndef MATERIAL_H
 #define MATERIAL_H
 
-//ToDo: make material class as parent and inherit different mat from it..
+//ToDo: make material class as parent and inherit different mat from it...
 class Material {
 public:
 	enum class ShaderType

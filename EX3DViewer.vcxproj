@@ -158,10 +158,8 @@
     <ClCompile Include="imgui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="imgui\imgui_tables.cpp" />
     <ClCompile Include="imgui\imgui_widgets.cpp" />
-    <ClCompile Include="scr\App.cpp" />
     <ClCompile Include="scr\Camera.cpp" />
     <ClCompile Include="scr\EBO.cpp" />
-    <ClCompile Include="scr\FileIO.cpp" />
     <ClCompile Include="scr\glad.c" />
     <ClCompile Include="scr\GlApp.cpp" />
     <ClCompile Include="scr\Main.cpp" />
@@ -171,7 +169,7 @@
     <ClCompile Include="scr\ModelMaker.cpp" />
     <ClCompile Include="scr\PathHelper.cpp" />
     <ClCompile Include="scr\SettingData.cpp" />
-    <ClCompile Include="scr\ShaderClass.cpp" />
+    <ClCompile Include="scr\Shader.cpp" />
     <ClCompile Include="scr\stb.cpp" />
     <ClCompile Include="scr\Texture.cpp" />
     <ClCompile Include="scr\UIHandler.cpp" />
@@ -194,10 +192,8 @@
     <ClInclude Include="imgui\imstb_rectpack.h" />
     <ClInclude Include="imgui\imstb_textedit.h" />
     <ClInclude Include="imgui\imstb_truetype.h" />
-    <ClInclude Include="scr\App.h" />
     <ClInclude Include="scr\Camera.h" />
     <ClInclude Include="scr\EBO.h" />
-    <ClInclude Include="scr\FileIO.h" />
     <ClInclude Include="scr\GlApp.h" />
     <ClInclude Include="scr\Material.h" />
     <ClInclude Include="scr\Mesh.h" />
@@ -205,7 +201,7 @@
     <ClInclude Include="scr\ModelMaker.h" />
     <ClInclude Include="scr\PathHelper.h" />
     <ClInclude Include="scr\SettingData.h" />
-    <ClInclude Include="scr\ShaderClass.h" />
+    <ClInclude Include="scr\Shader.h" />
     <ClInclude Include="scr\Texture.h" />
     <ClInclude Include="scr\UIHandler.h" />
     <ClInclude Include="scr\VAO.h" />

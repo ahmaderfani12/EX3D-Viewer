@@ -1,6 +1,5 @@
 #include"UIHandler.h"
 #include "imgui.h"
-
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 #include <windows.h>
@@ -8,6 +7,12 @@
 #include "FileIO.h"
 #include "SettingData.h"
 
+
+
+UIHandler::UIHandler(GlApp* x)
+{
+	app = x;
+}
 
 
 void UIHandler::InitializeImgui(GLFWwindow* windowP)
@@ -28,12 +33,7 @@ void UIHandler::PreRender()
 	ImGui_ImplGlfw_NewFrame();
 	ImGui::NewFrame();
 }
-//ToDo:delete this
-static float col1[3] = { 1.0f, 0.0f, 0.2f };
-static float col2[3] = { 0.4f, 0.7f, 0.0f };
-static float vecf[] = { 0.10f, 0.20f, 0.30f };
-float s;
-static float vec4a[4] = { 0.10f, 0.20f, 0.30f, 0.44f };
+
 void UIHandler::SetupPageLayouts()
 {
 

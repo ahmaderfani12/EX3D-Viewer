@@ -9,11 +9,12 @@
 
 class GlApp {
 public:
-
-	GLFWwindow* window;
-	Camera camera;
 	int width;
 	int height;
+
+	Camera camera;
+
+	GLFWwindow* window;
 	Model* mainModel;
 	Model* gizmoModel;
 	GlApp(const std::string& appName, int height, int width);

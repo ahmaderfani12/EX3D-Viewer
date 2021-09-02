@@ -7,11 +7,7 @@
 class UIHandler {
 public:
 
-	
-	UIHandler(GlApp* x) {
-		app = x;
-	}
-	
+	UIHandler(GlApp* x);
 	GlApp* app;
 
 	void InitializeImgui(GLFWwindow* windowP);

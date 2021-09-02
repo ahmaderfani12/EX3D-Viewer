@@ -16,9 +16,6 @@
     <Filter Include="Resource Files\Shaders">
       <UniqueIdentifier>{9ccb5cb1-f4a3-4be5-bd4b-ce997e0c1786}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\Textures">
-      <UniqueIdentifier>{31a7de8d-1be6-411b-8ebc-2ac01640ead2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource Files\imgui">
       <UniqueIdentifier>{411d7e46-a185-472b-b671-3c2ad3aa523f}</UniqueIdentifier>
     </Filter>
@@ -57,16 +54,10 @@
     <ClCompile Include="scr\GlApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="scr\FileIO.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="scr\EBO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="scr\Camera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="scr\App.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="scr\glad.c">
@@ -87,7 +78,7 @@
     <ClCompile Include="scr\stb.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="scr\ShaderClass.cpp">
+    <ClCompile Include="scr\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="scr\PathHelper.cpp">
@@ -152,16 +143,10 @@
     <ClInclude Include="scr\GlApp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="scr\FileIO.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="scr\EBO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="scr\Camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="scr\App.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="scr\VBO.h">
@@ -176,7 +161,7 @@
     <ClInclude Include="scr\Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="scr\ShaderClass.h">
+    <ClInclude Include="scr\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="scr\PathHelper.h">

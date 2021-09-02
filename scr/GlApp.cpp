@@ -4,9 +4,8 @@
 #include"GlApp.h"
 #include "Texture.h"
 #include "ModelMaker.h"
-#include "UIHandler.h"
 #include"SettingData.h"
-
+#include "UIHandler.h"
 
 
 GlApp::GlApp(const std::string& appName, int height, int width)
@@ -16,7 +15,7 @@ GlApp::GlApp(const std::string& appName, int height, int width)
 
 void GlApp::Start() {
 
-	//On start Model
+	// On start Models
 	SetMainModel(PathHelper::GetRootPath() + "/files/Ex3D_Logo.obj", PathHelper::GetRootPath() + "/files/Gradient.png");
 	SetGizmoModel(PathHelper::GetRootPath() + "/files/XYZ.fbx", PathHelper::GetRootPath() + "/files/Gradient.png");
 
@@ -25,8 +24,6 @@ void GlApp::Start() {
 	// Initialize ImGUI
 	ui.InitializeImgui(window);
 
-
-
 	while (!glfwWindowShouldClose(window))
 	{
 		PreRender();
@@ -34,9 +31,9 @@ void GlApp::Start() {
 		ui.PreRender();
 
 		SetCameraAttribute();
-
-		
+	
 		mainModel->Draw();
+
 		if(SettingData::showGizmo)
 			gizmoModel->Draw();
 
@@ -122,6 +119,7 @@ void GlApp::InitialApp(const std::string& appName, int height, int width)
 }
 
 void GlApp::Terminate() {
+	
 	mainModel->DeleteShader();
 	gizmoModel->DeleteShader();
 	glfwDestroyWindow(window);

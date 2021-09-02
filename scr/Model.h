@@ -1,13 +1,12 @@
 #ifndef MODEL_H
 #define MODEL_H
-#include "ShaderClass.h"
+#include "Shader.h"
 #include "Mesh.h"
 #include<vector>;
 #include "Texture.h";
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
-#include"shaderClass.h"
 #include "Material.h"
 
 class Model
@@ -35,8 +34,6 @@ private:
     void loadModel(std::string path);
     void ProcessNode(aiNode* node, const aiScene* scene);
     Mesh ProcessMesh(aiMesh* mesh, const aiScene* scene);
-
-    void UpdateMeterial();
 
 };
 #endif
