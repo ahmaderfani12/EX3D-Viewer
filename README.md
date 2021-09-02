@@ -1,4 +1,4 @@
-[README.md](https://github.com/ahmaderfani12/EX3D-Viewer/files/7100198/README.md)
+
 # EX3D-Viewer
 A 3D viewer made with OpenGL. I tried to get familiar with rendering pipelines in this project. Besides, there are several shader adjustments that you can make your desired look out of your model.
 
