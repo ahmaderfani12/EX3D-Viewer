@@ -17,7 +17,7 @@ GlApp::GlApp(const std::string& appName, int height, int width)
 void GlApp::Start() {
 
 	// On start Models
-	SetMainModel(PathHelper::GetRootPath() + "/files/Ex3D_Logo.obj", PathHelper::GetRootPath() + "/files/Gradient.png");
+	SetMainModel(PathHelper::GetRootPath() + "/files/Ex3DViewer_Logo.fbx", PathHelper::GetRootPath() + "/files/Gradient.png");
 	SetGizmoModel(PathHelper::GetRootPath() + "/files/XYZ.fbx", PathHelper::GetRootPath() + "/files/Gradient.png");
 
 	 ui = UIHandler(this);
