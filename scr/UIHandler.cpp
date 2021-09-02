@@ -85,7 +85,7 @@ void UIHandler::SetupPageLayouts()
 	}
 	
 
-	if (ImGui::CollapsingHeader("Enviroment"))
+	if (ImGui::CollapsingHeader("Environment"))
 	{
 		
 		ImGui::Spacing();
