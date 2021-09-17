@@ -51,9 +51,9 @@ vec4 direcLight()
 	// Based on Shadow:
 	//float rimAmount = max(1.0 - pow(max(dot(normal,verToCam),0.01),rimPower)*rimStrength,0) * diffuse;
 	
-
-	return mix(texture(diffuse0, texCoord),vec4(rimColor,1.0),rimAmount) * (diffuseColor + specular);
-	//return vec4(rimAmount,rimAmount,rimAmount,1.0);
+	vec4 base = texture(diffuse0, texCoord)* (diffuseColor + specular);
+	//return mix(texture(diffuse0, texCoord),vec4(rimColor,1.0),rimAmount) * (diffuseColor + specular);
+	return mix(base, vec4(rimColor,1.0),rimAmount) ;
 }
 
 
